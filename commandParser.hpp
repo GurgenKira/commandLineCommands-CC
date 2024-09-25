@@ -12,8 +12,8 @@ public:
 
     void parse(int argc);
     std::string getCommandName() const;
-    //std::variant<std::filesystem::path, commandParser::commandArgs::commandOption> getArg1() const;
-    //std::filesystem::path getArg2() const;
+    char getArg1() const;
+    std::filesystem::path getArg2() const;
 
 private:
     // This function returns out.exe for windows and probably will return out for Linux 
@@ -29,11 +29,8 @@ private:
 
 private:
     struct commandArgs {
-        enum class commandOption {
-            c, l, w, m, invalid
-        };
         bool isDefaultOption;
-        std::variant<std::filesystem::path, commandOption> arg1;
+        char arg1;
         std::filesystem::path arg2;
     };
 

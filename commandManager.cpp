@@ -11,6 +11,7 @@ commandManager::commandManager(int argc, char** argv)
     }
     commandParser parser(argv);
     parser.parse(argc);
+    m_currentCommand = std::make_unique<wc>(parser.getArg1(), parser.getArg2());
 }
 
 void

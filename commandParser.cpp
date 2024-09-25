@@ -20,17 +20,17 @@ commandParser::getCommandName() const
     return m_commandName;
 }
 
-//std::variant<std::filesystem::path, commandParser::commandArgs::commandOption>
-//commandParser::getArg1() const
-//{
-//    return m_commandArgs.arg1;
-//}
-//
-//std::filesystem::path
-//commandParser::getArg2() const
-//{
-//    return m_commandArgs.arg2;
-//}
+char
+commandParser::getArg1() const
+{
+    return m_commandArgs.arg1;
+}
+
+std::filesystem::path
+commandParser::getArg2() const
+{
+    return m_commandArgs.arg2;
+}
 
 void commandParser::setCommandName(const std::string& cn)
 {
@@ -40,24 +40,25 @@ void commandParser::setCommandName(const std::string& cn)
 void
 commandParser::setArg1(const std::string& a1)
 {
-    if (startsWith(a1, std::string("-"))) {
-        // m_commandArgs.arg1 = getCommandOption(a1);
-        m_commandArgs.isDefaultOption = true;
-    } else {
-        m_commandArgs.arg1 = std::filesystem::path(a1);
-        m_commandArgs.isDefaultOption = false;
-    }
+    m_commandArgs.arg1 = a1[0];
+    //if (startsWith(a1, std::string("-"))) {
+    //    // m_commandArgs.arg1 = getCommandOption(a1);
+    //    m_commandArgs.isDefaultOption = true;
+    //} else {
+    //    m_commandArgs.arg1 = std::filesystem::path(a1);
+    //    m_commandArgs.isDefaultOption = false;
+    //}
 }
 
 // TODO:/ this is file name case, but you got to know that arg1 was not the file name case
 void 
 commandParser::setArg2(const std::string& a2)
 {
-    if (m_commandArgs.isDefaultOption) {
-         throw -1;
-        // TODO implemat this one
-        // throw InvalidCommandOrSomting();
-    }
+    //if (m_commandArgs.isDefaultOption) {
+    //     throw -1;
+    //    // TODO implemat this one
+    //    // throw InvalidCommandOrSomting();
+    //}
     m_commandArgs.arg2 = std::filesystem::path(a2);
 }
 
